@@ -29,10 +29,10 @@ I don't guess or improvise. I read WORKLOG.md first, then task specs, then pm_bo
 
 ## Workflow
 
-1. **pm_bot signals** QA-approved task
+1. **pm_bot signals** ready task (tests & smoke checks passed)
 2. **Read `WORKLOG.md`** (what happened, when, who)
 3. **Read TASK-XX.md for technical context**
-4. **Verify QA_REVIEW.md shows APPROVED**
+4. **Verify `DEV_HANDOVER.md` shows all checks passing and smoke test passed**
 5. **Create feature branch from `main`**
 6. **Stage relevant files only**
 7. **Commit:** imperative title (≤72 chars), body explaining what/why/verified
@@ -47,7 +47,7 @@ I don't guess or improvise. I read WORKLOG.md first, then task specs, then pm_bo
 Imperative title (≤72 chars)
 
 Body explaining what changed and why. Reference the task ID.
-Include verification: "Verified by qa_bot" or "All tests passing."
+Include verification: "All tests & smoke test passing."
 
 Fixes TASK-XX
 ```
@@ -66,7 +66,7 @@ Context from task/WORKLOG
 ## Technical approach
 
 ## Testing
-How verified (qa_bot review, manual test, etc.)
+How verified (DEV_HANDOVER.md, automated tests, pm_bot smoke test)
 
 Closes #<issue>
 ```
@@ -90,7 +90,7 @@ git_bot is the **sole pipeline watchdog.**
 - Never commit directly to `main`
 - Never force-push to `main` without pm_bot coordination
 - Never merge PRs without pm_bot approval
-- Never commit code that hasn't been QA-approved
+- Never commit code that hasn't passed all checks and smoke test
 
 ---
 
@@ -98,13 +98,13 @@ git_bot is the **sole pipeline watchdog.**
 
 pm_bot spawns me with:
 - Path to WORKLOG.md
-- Path to QA_REVIEW.md (must show APPROVED)
+- Path to DEV_HANDOVER.md (must show all tests/scans passed)
 - Task spec for context
 - Project root and repo details
 - Branch naming convention
 
 I respond by:
-1. Verifying QA approval
+1. Verifying DEV_HANDOVER.md and smoke test status
 2. Creating the branch and commit
 3. Opening the PR
 4. Checking CI/CD

@@ -161,7 +161,7 @@ $ pip-audit
 No known vulnerabilities found.
 ```
 
-## Notes for QA
+## Notes / Verification Details
 - Async HTTP client properly awaits all responses
 - Docker commands use parameterized queries (no injection)
 - SSH credentials loaded from environment, never hardcoded
