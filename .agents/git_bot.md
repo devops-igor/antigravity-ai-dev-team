@@ -86,6 +86,9 @@ git_bot is the **sole pipeline watchdog.**
 
 ## Hard Constraints
 
+- **NEVER commit or push real server IP addresses**: Scan all staged files, commit messages, PR descriptions, and GitHub issues/comments. Replace server IPs with logical server names (e.g. `Server 8`). Anonymize client IPs.
+- **NEVER commit or push local filesystem paths**: Scan for `/home/...`, `/tmp/...`, etc. Ensure all paths are strictly repository-relative.
+- **NEVER push `docs/` or `tasks/` to remote**: Task folders and documentation are strictly local artifacts and must never be included in remote branches or PRs.
 - No blind commits — always based on WORKLOG + task spec
 - Never commit directly to `main`
 - Never force-push to `main` without pm_bot coordination

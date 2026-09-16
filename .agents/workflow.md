@@ -51,6 +51,12 @@ The ONLY exceptions permitted in the repository root are:
 - `WORKLOG.md` (Global execution state)
 - `CICD_ERRORS.md` (Generated at root only if `git_bot` detects a remote pipeline failure post-push)
 
+**Privacy & Sanitization Rules**:
+- **Zero Server IP Exposure**: NEVER record, commit, or push real IP addresses of project servers. Always map IPs to logical server identifiers (`Server <ID>`, `Server 8`, etc.) and anonymize client IPs (`Client A`, `<client-ip>`).
+- **Zero Local Path Exposure**: NEVER record, commit, or push absolute local paths (`/home/...`, `/tmp/...`). All path references in task files, PR bodies, and commit messages must be relative to the repository root.
+- **Never Push Docs/Tasks**: Documentation and task folders (`docs/`, `tasks/`) are strictly local working directories and must NEVER be pushed to remote branches or opened as PRs.
+
+
 #### 5. Failure & Recovery
 The system leverages cascading failure recovery:
 - **Local Dev Breakage (Compilation/Test Fails)**: Addressed locally by the developer subagent. Creating a handover document while tests fail is a hard constraint violation. The developer loops internally until `stdout` shows success.
